@@ -5,7 +5,8 @@
 This repository contains an example of embedding the Signal Sciences Agent in the [ingress-nginx](https://github.com/kubernetes/ingress-nginx) Ingress controller:
 
 - [/sigsci-module-nginx-ingress/Dockerfile](/sigsci-module-nginx-ingress/Dockerfile)
-  - This container is a "wrapper" for the default `nginx-ingress-controller` container and serves to add the Signal Sciences nginx Module files. You can set the image version in the Dockerfile, version used here is 0.22.0
+  - This container is a "wrapper" for the default `nginx-ingress-controller` container and serves to add the Signal Sciences nginx Module files. You can set the image version in the Dockerfile, version used here is 0.22.0.
+  - One of the challenges is knowing which version of nginx is used for each ingress controller version. You need to know that in order to download the correct SigSci nginx module. This Dockerfile will pull out the nginx version and feed it into the SigSci module file download.  As long as the ingress controller has a nginx version that has a corresponding SigSci nginx module, the container should build successfully.
 - [/sigsci-agent/Dockerfile](/sigsci-agent/Dockerfile)
   - This container is a sidecar, running the Signal Sciences Agent, that will be included in the same pod as the nginx-ingress-controller
 - [mandatory.yaml](mandatory.yaml)
