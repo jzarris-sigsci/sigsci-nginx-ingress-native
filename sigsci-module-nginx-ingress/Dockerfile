@@ -7,7 +7,6 @@ USER root
 # Then pull the filename with the latest module version build number by listing https://dl-signalsciences-net.s3-us-west-2.amazonaws.com/?delimiter=/&prefix=sigsci-module-nginx-native/$SIGSCI_MODULE_VERSION/debian/stretch/
 # Feed this into curl -O "https://dl.signalsciences.net/sigsci-module-nginx-native/$SIGSCI_MODULE_VERSION/debian/stretch/$SIGSCI_MODULE_BUILD"
 # Then install $SIGSCI_MODULE_BUILD
-# This is temporary until the DL site for nginx native modules has a "latest" tarball
 
 RUN NGINX_BUILD=$(nginx -v 2>&1 | grep  -Po '(?<=nginx\/)[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}') ;\
   echo $NGINX_BUILD ;\
